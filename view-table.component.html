@@ -1,0 +1,82 @@
+
+<button type="button" class="btn btn-primary" (click)="toggle()">Change Theme</button>
+
+<table class="table table-bordered" *ngIf="changeTheme">
+  <thead>
+    <tr>
+      <th scope="col">movie_title</th>
+      <th scope="col">director_name</th>
+      <th scope="col">actor_1_name</th>
+      <th scope="col">actor_2_name</th>
+      <th scope="col">genres</th>
+      <th scope="col">language</th>
+      <th scope="col">country</th>
+      <th scope="col">content_rating</th>
+      <th scope="col">budget</th>
+      <th scope="col">title_year</th>
+      <th scope="col">plot_keywords</th>
+      <th scope="col">movie_imdb_link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movieArr | slice: pageSize
+    | slice: 0:itemsPerPage  ">
+        <td scope="col">{{movie.movie_title}}</td>
+        <td scope="col">{{movie.director_name}}</td>
+        <td scope="col">{{movie.actor_1_name}}</td>
+        <td scope="col">{{movie.actor_2_name}}</td>
+        <td scope="col">{{movie.genres}}</td>
+        <td scope="col">{{movie.language}}</td>
+        <td scope="col">{{movie.country}}</td>
+        <td scope="col">{{movie.content_rating}}</td>
+        <td scope="col">{{movie.budget}}</td>
+        <td scope="col">{{movie.title_year}}</td>
+        <td scope="col">{{movie.plot_keywords}}</td>
+        <td scope="col">{{movie.movie_imdb_link}}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
+
+
+        
+        <table class="table table-bordered table-dark" *ngIf="!changeTheme">
+          <thead>
+            <tr>
+              <th scope="col">movie_title</th>
+              <th scope="col">director_name</th>
+              <th scope="col">actor_1_name</th>
+              <th scope="col">actor_2_name</th>
+              <th scope="col">genres</th>
+              <th scope="col">language</th>
+              <th scope="col">country</th>
+              <th scope="col">content_rating</th>
+              <th scope="col">budget</th>
+              <th scope="col">title_year</th>
+              <th scope="col">plot_keywords</th>
+              <th scope="col">movie_imdb_link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movie of movieArr | slice: pageSize
+            | slice: 0:itemsPerPage  ">
+                <td scope="col">{{movie.movie_title}}</td>
+                <td scope="col">{{movie.director_name}}</td>
+                <td scope="col">{{movie.actor_1_name}}</td>
+                <td scope="col">{{movie.actor_2_name}}</td>
+                <td scope="col">{{movie.genres}}</td>
+                <td scope="col">{{movie.language}}</td>
+                <td scope="col">{{movie.country}}</td>
+                <td scope="col">{{movie.content_rating}}</td>
+                <td scope="col">{{movie.budget}}</td>
+                <td scope="col">{{movie.title_year}}</td>
+                <td scope="col">{{movie.plot_keywords}}</td>
+                <td scope="col">{{movie.movie_imdb_link}}</td>
+             
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination [collectionSize]="movieArr.length" #numPages [pageSize]="itemsPerPage" [(page)]="currentPage"
+                (pageChange)="onPageChange(currentPage)"></ngb-pagination>
+        
